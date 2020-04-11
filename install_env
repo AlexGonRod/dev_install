@@ -1,0 +1,47 @@
+export ZSH="/Users/deepinside/.oh-my-zsh"
+export CUSTOM="$ZSH/custom/plugins"
+
+homebrew () {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+}
+
+iterm2 () {
+    brew cask install iterm2
+}
+
+zsh () {
+    brew install zsh
+}
+
+oh () {
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
+powerlevel () {
+    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+}
+
+wizard () {
+    p10k configurep
+}
+
+sugg () {
+    cd $CUSTOM
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    echo "include this: source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ath the end of ~/.zshrc"
+    autoload -U compinit && compinit
+}
+
+syntax () {
+    cd $CUSTOM
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    echo "add plugins=(zsh-autosuggestions) into .zshrc"
+    autoload -U compinit && compinit
+}
+
+completition () {
+    cd $CUSTOM
+    git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+    echo "add plugins=(zsh-completions) into .zshrc"
+    autoload -U compinit && compinit
+}
